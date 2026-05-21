@@ -1,0 +1,496 @@
+@import "tailwindcss";
+
+:root {
+  --page-bg: #1c1c1c;
+  --surface: #0f1115;
+  --surface-deep: #110a09;
+  --primary-gradient: linear-gradient(
+    260deg,
+    rgba(255, 190, 11, 0.84) -29.7%,
+    rgba(244, 43, 3, 0.84) 128.34%
+  );
+  --accent-gradient: linear-gradient(90deg, #ffb347, #ff7a00, #ff3c00);
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --accent-orange: #ff8a00;
+  --accent-red: #ff3c00;
+  --unify-primary: #ff6200;
+  --unify-highlight: #ffae43;
+  --unify-gradient: linear-gradient(135deg, #ffae43 0%, #ff6200 100%);
+  --footer-glow: #f45725;
+  --tech-clip-sm: polygon(
+    0 10px,
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%
+  );
+  --tech-clip-md: polygon(
+    0 16px,
+    16px 0,
+    100% 0,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0 100%
+  );
+  --tech-clip-lg: polygon(
+    0 20px,
+    20px 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%
+  );
+  --scrollbar-size: 5px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.16);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+  --header-offset: 4.5rem;
+}
+
+@theme inline {
+  --color-page-bg: var(--page-bg);
+  --color-surface: var(--surface);
+  --color-surface-deep: var(--surface-deep);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-border-glass: var(--border-glass);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-red: var(--accent-red);
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-dm-sans), system-ui, sans-serif;
+}
+
+html {
+  scrollbar-gutter: stable;
+  scroll-padding-top: var(--header-offset);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.font-display {
+  font-weight: 700;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: var(--header-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Slim black & white scrollbars — site-wide */
+html,
+body,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-accent {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Legacy alias */
+.glass-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(12px);
+}
+
+.unify-app-shell {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 80px -12px rgba(0, 0, 0, 0.65);
+}
+
+.unify-sidebar {
+  background: #171717;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Hero image - main panel only, neutral dark scrim */
+.unify-main-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/herobgimage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.unify-main-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.82) 50%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+.unify-composer {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(47, 47, 47, 0.92);
+  backdrop-filter: blur(16px);
+}
+
+.unify-composer:focus-within {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.unify-send-btn {
+  background: #ffffff;
+  color: #000000;
+}
+
+.unify-send-btn:disabled {
+  opacity: 0.35;
+}
+
+.unify-prompt-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(23, 23, 23, 0.88);
+  backdrop-filter: blur(12px);
+}
+
+.unify-nav-active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.unify-panel-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(23, 23, 23, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.unify-panel-card--active {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(38, 38, 38, 0.95);
+}
+
+/* Landing hero — bghero.png (center dark band for content) */
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  background: #000;
+}
+
+.hero-section__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-section__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Light edge vignette only — keep center band visible */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    transparent 18%,
+    transparent 82%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+}
+
+.hero-bg {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 138, 0, 0.12), transparent 40%),
+    linear-gradient(
+      115deg,
+      rgba(8, 10, 14, 0.92) 8%,
+      rgba(8, 10, 14, 0.88) 52%,
+      rgba(8, 10, 14, 0.94) 100%
+    ),
+    url("/herobgimage.png"),
+    var(--surface);
+  background-size: auto, auto, cover, auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-heading-line {
+  height: 3px;
+  width: 64px;
+  background: var(--primary-gradient);
+  border-radius: 999px;
+}
+
+/* Technical card - gradient border + clip-path */
+.tech-card {
+  position: relative;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 138, 0, 0.55) 0%,
+    rgba(255, 255, 255, 0.08) 28%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 60, 0, 0.25) 100%
+  );
+  clip-path: var(--tech-clip-md);
+}
+
+.tech-card--sm {
+  clip-path: var(--tech-clip-sm);
+}
+
+.tech-card--lg {
+  clip-path: var(--tech-clip-lg);
+}
+
+.tech-card--featured {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 190, 11, 0.7) 0%,
+    rgba(255, 138, 0, 0.35) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(244, 43, 3, 0.4) 100%
+  );
+  box-shadow: 0 0 40px -8px rgba(255, 138, 0, 0.25);
+}
+
+.tech-card__inner {
+  position: relative;
+  height: 100%;
+  clip-path: var(--tech-clip-md);
+  background: linear-gradient(
+    165deg,
+    rgba(18, 20, 26, 0.98) 0%,
+    rgba(12, 14, 18, 0.99) 100%
+  );
+  overflow: hidden;
+}
+
+.tech-card--sm .tech-card__inner {
+  clip-path: var(--tech-clip-sm);
+}
+
+.tech-card--lg .tech-card__inner {
+  clip-path: var(--tech-clip-lg);
+}
+
+.tech-card--featured .tech-card__inner {
+  background: linear-gradient(
+    165deg,
+    rgba(22, 18, 14, 0.98) 0%,
+    rgba(12, 14, 18, 0.99) 55%,
+    rgba(10, 12, 16, 1) 100%
+  );
+}
+
+.tech-card__grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.tech-card__accent {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 138, 0, 0.8),
+    transparent
+  );
+}
+
+/* Animated border beam — rotating highlight on clipped edge */
+.tech-card--beam {
+  overflow: hidden;
+  background: rgba(255, 98, 0, 0.22);
+}
+
+.tech-card--beam .tech-card__beam {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: 240%;
+  height: 240%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    rgba(255, 98, 0, 0.1) 45deg,
+    #ffae43 68deg,
+    #ff6200 84deg,
+    #ffae43 100deg,
+    rgba(255, 98, 0, 0.18) 125deg,
+    transparent 155deg,
+    transparent 360deg
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: center center;
+  animation: tech-border-spin 3.2s linear infinite;
+}
+
+.tech-card--beam .tech-card__inner {
+  z-index: 1;
+  clip-path: none;
+}
+
+.tech-card--beam .tech-card__accent {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 174, 67, 0.5),
+    rgba(255, 98, 0, 0.85),
+    rgba(255, 174, 67, 0.5),
+    transparent
+  );
+  animation: tech-accent-pulse 3.2s ease-in-out infinite;
+}
+
+@keyframes tech-border-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes tech-accent-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-card--beam .tech-card__beam,
+  .tech-card--beam .tech-card__accent {
+    animation: none;
+  }
+}
+
+/* Technical chip / tag */
+.tech-chip {
+  clip-path: polygon(
+    6px 0,
+    100% 0,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    0 100%,
+    0 6px
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.tech-chip--accent {
+  border-color: rgba(255, 138, 0, 0.35);
+  background: rgba(255, 138, 0, 0.08);
+}

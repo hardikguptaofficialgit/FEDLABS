@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+import { DM_Sans, Syne } from "next/font/google";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import "./globals.css";
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "FED Labs | Unify - AI Marketing Agents for Founders",
+  description:
+    "Unify by FED Labs - unified AI agents for founder marketing. Connect Reddit, X, and team accounts. Built by FED Engineering.",
+  keywords: [
+    "FED Labs",
+    "FED Society",
+    "startup intelligence",
+    "founder operating system",
+  ],
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${dmSans.variable} ${syne.variable} h-full`}
+    >
+      <body className="flex min-h-full flex-col font-sans antialiased">
+        <SmoothScroll>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </SmoothScroll>
+      </body>
+    </html>
+  );
+}
