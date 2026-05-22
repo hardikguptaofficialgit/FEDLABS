@@ -64,7 +64,7 @@ export function Hero() {
 
         {/* Typewriter Effect */}
         <p
-          className="font-display mt-4 min-h-[1.5em] text-lg font-semibold tracking-tight text-[#ffb347] sm:text-xl"
+          className="font-display mt-4 min-h-[1.5em] text-lg font-medium text-[#ffb347] sm:text-xl"
           aria-live="polite"
         >
           {displayText}

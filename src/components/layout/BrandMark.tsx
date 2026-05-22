@@ -21,7 +21,7 @@ export function BrandMark({ logoSize = 40, className = "" }: BrandMarkProps) {
         className="shrink-0 rounded-full"
       />
       <span className="inline-flex items-center gap-1.5 leading-none">
-        <span className="font-display text-xl font-bold tracking-tight text-text-primary sm:text-2xl">
+        <span className="font-display text-xl font-semibold text-text-primary sm:text-2xl">
           FED
         </span>
         <span className="inline-flex items-center gap-1">
@@ -31,7 +31,7 @@ export function BrandMark({ logoSize = 40, className = "" }: BrandMarkProps) {
             className="shrink-0 text-accent-orange"
             aria-hidden
           />
-          <span className="font-display text-xl font-bold text-gradient sm:text-2xl">
+          <span className="font-display text-xl font-semibold text-gradient sm:text-2xl">
             Labs
           </span>
         </span>

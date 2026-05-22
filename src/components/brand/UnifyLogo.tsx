@@ -40,7 +40,7 @@ export function UnifyLogo({
       </span>
       {showWordmark && (
         <span
-          className={`font-display text-lg font-bold tracking-tight text-white sm:text-xl ${wordmarkClassName}`.trim()}
+          className={`font-display text-lg font-semibold text-white sm:text-xl ${wordmarkClassName}`.trim()}
         >
           Unify
         </span>
